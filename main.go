@@ -18,7 +18,7 @@ func main() {
 	version := os.Getenv("VERSION")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
-		response := "env VERSION is not set.\n\ndocker run -d\n\t-p 3000:80\n\t-e VERSION=1.0.0\n\ttheremix/http-env-server"
+		response := "env VERSION is not set.\n\ndocker run -d \\\n\t-p 3000:80 \\\n\t-e VERSION=1.0.0 \\\n\ttheremix/http-env-server"
 		if version != "" {
 			response = fmt.Sprintf("HTTP env server. version:%s", version)
 		}
